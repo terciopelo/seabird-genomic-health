@@ -1,0 +1,2 @@
+../raw_reads/fake2
+../raw_reads/fake
