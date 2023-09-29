@@ -5,11 +5,15 @@
 # remove any aliasing that will alter the output of ls
 #unalias ls
 
+cd ../raw_reads/
+
 # get just file names for fastqs, output to text
-ls ../raw_reads/*.gz -1 > file_list.txt
+ls *.gz -1 > ../01-trim_qc/file_list.txt
 
 # remove every second entry (paired end reads=pairs of files)
 # use -i flag to edit file
+
+cd ../01-trim_qc
 
 sed -i -e n\;d file_list.txt
 

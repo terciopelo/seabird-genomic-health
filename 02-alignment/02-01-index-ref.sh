@@ -2,7 +2,7 @@
 #SBATCH --account=def-vlf
 #SBATCH --job-name=index_ref
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=your_email@queensu.ca
+#SBATCH --mail-user=11ckb5@queensu.ca
 #SBATCH --mem 20G
 #SBATCH -c 1
 #SBATCH --time 2:00:00
