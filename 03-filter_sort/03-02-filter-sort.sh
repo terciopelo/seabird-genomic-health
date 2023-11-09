@@ -12,7 +12,7 @@
 
 module load samtools
 
-SAMPLELIST="../raw_reads/x${SLURM_ARRAY_TASK_ID}.fl"
+SAMPLELIST="../01-trim_qc/x${SLURM_ARRAY_TASK_ID}.fl"
 
 for SAMPLE in `cat $SAMPLELIST`; do
 

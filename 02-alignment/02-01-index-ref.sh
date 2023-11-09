@@ -15,3 +15,10 @@ module load bwa
 cd ../ref_genome
 
 bwa index ref_genome.fa
+
+module load samtools
+module load picard
+
+samtools faidx  ../ref_genome/ref_genome.fa
+
+java -jar $EBROOTPICARD/picard.jar CreateSequenceDictionary -R ../ref_genome/ref_genome.fa
