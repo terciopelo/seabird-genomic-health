@@ -17,11 +17,8 @@ SAMPLELIST="../01-trim_qc/x${SLURM_ARRAY_TASK_ID}.fl"
 for SAMPLE in `cat $SAMPLELIST`; do
 
 ## Convert to bam file for storage (including all the mapped reads)
-        # -F 4 means retain only mapped reads
-        samtools view -bS -F 4 ../02-alignment/${SAMPLE}_aligned.bam  > ./mapped/${SAMPLE}_mapped.bam
+        # -F 4 means retain only mapped reads, retain only reads with quality >20
+        samtools view -h -bS -F 4 -q20 ../02-alignment/${SAMPLE}_aligned.bam | samtools view -buS - | samtools sort -o ./sorted/${SAMPLE}_sorted_minq20.bam
 
-        ## Filter the mapped reads (to only retain reads with high mapping quality)
-        # Filter bam files to remove poorly mapped reads (non-unique mappings and mappings with a quality score < 20)
-        samtools view -h -q 20 ./mapped/${SAMPLE}_mapped.bam | samtools view -buS - | samtools sort -o ./sorted/${SAMPLE}_sorted_minq20.bam
         samtools index ./sorted/${SAMPLE}_sorted_minq20.bam
 done
